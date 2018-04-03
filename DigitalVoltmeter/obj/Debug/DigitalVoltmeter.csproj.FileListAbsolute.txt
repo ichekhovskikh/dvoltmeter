@@ -1,0 +1,83 @@
+C:\Users\chekh\source\repos\DigitalVoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+C:\Users\chekh\source\repos\DigitalVoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+C:\Users\chekh\source\repos\DigitalVoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb
+C:\Users\chekh\source\repos\DigitalVoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+C:\Users\chekh\source\repos\DigitalVoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Form1.resources
+C:\Users\chekh\source\repos\DigitalVoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+C:\Users\chekh\source\repos\DigitalVoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.Cache
+C:\Users\chekh\source\repos\DigitalVoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.CoreCompileInputs.cache
+C:\Users\chekh\source\repos\DigitalVoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+C:\Users\chekh\source\repos\DigitalVoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+C:\Users\Vladislav\Source\Repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+C:\Users\Vladislav\Source\Repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+C:\Users\Vladislav\Source\Repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb
+C:\Users\Vladislav\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+C:\Users\Vladislav\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Form1.resources
+C:\Users\Vladislav\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+C:\Users\Vladislav\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.Cache
+C:\Users\Vladislav\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.CoreCompileInputs.cache
+C:\Users\Vladislav\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+C:\Users\Vladislav\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+C:\Users\chekh\source\repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+C:\Users\chekh\source\repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+C:\Users\chekh\source\repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb
+C:\Users\chekh\source\repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+C:\Users\chekh\source\repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+C:\Users\chekh\source\repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.Cache
+C:\Users\chekh\source\repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.CoreCompileInputs.cache
+C:\Users\chekh\source\repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+C:\Users\chekh\source\repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+D:\Labs\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+D:\Labs\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+D:\Labs\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb
+D:\Labs\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+D:\Labs\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Form1.resources
+D:\Labs\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+D:\Labs\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.cache
+D:\Labs\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.CoreCompileInputs.cache
+D:\Labs\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+D:\Labs\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+C:\Users\chekh\source\repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.DigitalVoltmeterForm.resources
+C:\Users\chekh\source\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+C:\Users\chekh\source\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+C:\Users\chekh\source\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb
+C:\Users\chekh\source\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+C:\Users\chekh\source\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.DigitalVoltmeterForm.resources
+C:\Users\chekh\source\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+C:\Users\chekh\source\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.Cache
+C:\Users\chekh\source\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.CoreCompileInputs.cache
+C:\Users\chekh\source\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+C:\Users\chekh\source\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.DigitalVoltmeterForm.resources
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.Cache
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.DigitalVoltmeterForm.resources
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.GraphExpandingForm.resources
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.Cache
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.CoreCompileInputs.cache
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+D:\Labs\Volt\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+D:\Labs\Volt\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+D:\Labs\Volt\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb
+D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.DigitalVoltmeterForm.resources
+D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.GraphExpandingForm.resources
+D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.cache
+D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.CoreCompileInputs.cache
+D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.GraphExpandingForm.resources
+C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Forms.GraphForm.resources
