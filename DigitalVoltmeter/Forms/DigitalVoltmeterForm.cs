@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -477,22 +478,31 @@ namespace DigitalVoltmeter
 
         }
 
-        private void buttonGetCritical3DModel_Click(object sender, EventArgs e)
+        private async void buttonGetCritical3DModel_Click(object sender, EventArgs e)
         {
-            long now = DateTime.Now.Ticks; 
-            //var area = CriticalParamsService.GetCriticalArea(4, 1000, 10f, 1);
-            //using (Graphics g = CreateGraphics())
-            //{
-            //    Point[] points = area.Select(p => { return new Point((int)p.X + 1300, (int)p.Y + 300); }).ToArray();
-            //    g.DrawLines(Pens.Black, points);
-            //    //foreach(Point3D point in area){
-            //    //    g.DrawEllipse(Pens.Black, point.X+1300, point.Y+300, 1, 1);
-            //    //}
-            //}
-            List<ParamsPolygon> polygons = CriticalParamsService.GetPolygonsOfCriticalArea(4, 1000, 10f, 1);
+            await BuildModel();
+        }
+
+        private async Task BuildModel()
+        {
+            int n = 0;
+            double coeff = 0;
+            try
+            {
+                n = (int)numericUpDownN.Value;
+                coeff = (double)numericUpDownK.Value;
+            }
+            catch
+            {
+                MessageBox.Show("Неверный формат входных параметров!");
+                return;
+            }
+            int countOfResolution = 20;
+
+            CriticalParamsService.TextBoxLog = textBoxState;
+            List<ParamsPolygon> polygons = await CriticalParamsService.GetPolygonsOfCriticalArea(n, coeff, countOfResolution, 1);
             GraphForm graphForm = new GraphForm(polygons, this);
             graphForm.Show();
-            double time = ((double)(DateTime.Now.Ticks-now))/10000000;
         }
 
         public double DeltaK

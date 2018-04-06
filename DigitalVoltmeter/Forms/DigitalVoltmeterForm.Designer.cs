@@ -55,6 +55,7 @@
             this.labelAccuracy = new System.Windows.Forms.Label();
             this.labelInitialStep = new System.Windows.Forms.Label();
             this.groupBoxCriticalValues = new System.Windows.Forms.GroupBox();
+            this.labelCriticalDI = new System.Windows.Forms.Label();
             this.labelDUsmErr = new System.Windows.Forms.Label();
             this.labelDIErr = new System.Windows.Forms.Label();
             this.labelDKErr = new System.Windows.Forms.Label();
@@ -66,7 +67,7 @@
             this.numericUpDownInitialStep = new System.Windows.Forms.NumericUpDown();
             this.buttonGetCritical3DModel = new System.Windows.Forms.Button();
             this.numericUpDownDI = new System.Windows.Forms.NumericUpDown();
-            this.labelCriticalDI = new System.Windows.Forms.Label();
+            this.textBoxState = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVect)).BeginInit();
             this.groupBoxCriticalValues.SuspendLayout();
@@ -83,7 +84,7 @@
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(127, 671);
+            this.progressBar.Location = new System.Drawing.Point(127, 677);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(830, 21);
             this.progressBar.TabIndex = 13;
@@ -101,7 +102,7 @@
             // buttonGetFormules
             // 
             this.buttonGetFormules.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonGetFormules.Location = new System.Drawing.Point(9, 472);
+            this.buttonGetFormules.Location = new System.Drawing.Point(9, 478);
             this.buttonGetFormules.Name = "buttonGetFormules";
             this.buttonGetFormules.Size = new System.Drawing.Size(133, 23);
             this.buttonGetFormules.TabIndex = 10;
@@ -121,7 +122,7 @@
             // buttonSaveToExel
             // 
             this.buttonSaveToExel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSaveToExel.Location = new System.Drawing.Point(11, 670);
+            this.buttonSaveToExel.Location = new System.Drawing.Point(11, 676);
             this.buttonSaveToExel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSaveToExel.Name = "buttonSaveToExel";
             this.buttonSaveToExel.Size = new System.Drawing.Size(110, 23);
@@ -135,10 +136,10 @@
             this.richTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.richTextBox.Location = new System.Drawing.Point(12, 501);
+            this.richTextBox.Location = new System.Drawing.Point(12, 507);
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.ReadOnly = true;
-            this.richTextBox.Size = new System.Drawing.Size(914, 117);
+            this.richTextBox.Size = new System.Drawing.Size(914, 95);
             this.richTextBox.TabIndex = 7;
             this.richTextBox.Text = "";
             this.richTextBox.WordWrap = false;
@@ -147,7 +148,7 @@
             // 
             this.checkBoxOutToWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxOutToWord.AutoSize = true;
-            this.checkBoxOutToWord.Location = new System.Drawing.Point(148, 476);
+            this.checkBoxOutToWord.Location = new System.Drawing.Point(148, 482);
             this.checkBoxOutToWord.Name = "checkBoxOutToWord";
             this.checkBoxOutToWord.Size = new System.Drawing.Size(126, 17);
             this.checkBoxOutToWord.TabIndex = 15;
@@ -158,7 +159,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 456);
+            this.label3.Location = new System.Drawing.Point(6, 462);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(308, 13);
             this.label3.TabIndex = 16;
@@ -220,7 +221,7 @@
             this.mainChart.Location = new System.Drawing.Point(221, 40);
             this.mainChart.Name = "mainChart";
             this.mainChart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.mainChart.Size = new System.Drawing.Size(440, 414);
+            this.mainChart.Size = new System.Drawing.Size(440, 420);
             this.mainChart.TabIndex = 33;
             title1.Name = "Title1";
             title1.Text = "Входное напряжение";
@@ -229,7 +230,7 @@
             // buttonExpand
             // 
             this.buttonExpand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExpand.Location = new System.Drawing.Point(592, 456);
+            this.buttonExpand.Location = new System.Drawing.Point(592, 462);
             this.buttonExpand.Name = "buttonExpand";
             this.buttonExpand.Size = new System.Drawing.Size(68, 23);
             this.buttonExpand.TabIndex = 34;
@@ -255,7 +256,7 @@
             this.dataGridViewVect.RowHeadersVisible = false;
             this.dataGridViewVect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewVect.ShowCellToolTips = false;
-            this.dataGridViewVect.Size = new System.Drawing.Size(259, 483);
+            this.dataGridViewVect.Size = new System.Drawing.Size(259, 489);
             this.dataGridViewVect.TabIndex = 35;
             this.dataGridViewVect.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewVect_CellPainting);
             this.dataGridViewVect.SelectionChanged += new System.EventHandler(this.dataGridViewVect_SelectionChanged);
@@ -355,6 +356,16 @@
             this.groupBoxCriticalValues.TabIndex = 48;
             this.groupBoxCriticalValues.TabStop = false;
             this.groupBoxCriticalValues.Text = "Критические значения";
+            // 
+            // labelCriticalDI
+            // 
+            this.labelCriticalDI.BackColor = System.Drawing.Color.LightGray;
+            this.labelCriticalDI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCriticalDI.Location = new System.Drawing.Point(31, 50);
+            this.labelCriticalDI.Name = "labelCriticalDI";
+            this.labelCriticalDI.Size = new System.Drawing.Size(144, 20);
+            this.labelCriticalDI.TabIndex = 53;
+            this.labelCriticalDI.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelDUsmErr
             // 
@@ -539,21 +550,20 @@
             this.numericUpDownDI.Size = new System.Drawing.Size(74, 20);
             this.numericUpDownDI.TabIndex = 56;
             // 
-            // labelCriticalDI
+            // textBoxState
             // 
-            this.labelCriticalDI.BackColor = System.Drawing.Color.LightGray;
-            this.labelCriticalDI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelCriticalDI.Location = new System.Drawing.Point(31, 50);
-            this.labelCriticalDI.Name = "labelCriticalDI";
-            this.labelCriticalDI.Size = new System.Drawing.Size(144, 20);
-            this.labelCriticalDI.TabIndex = 53;
-            this.labelCriticalDI.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textBoxState.Location = new System.Drawing.Point(12, 608);
+            this.textBoxState.Name = "textBoxState";
+            this.textBoxState.ReadOnly = true;
+            this.textBoxState.Size = new System.Drawing.Size(911, 20);
+            this.textBoxState.TabIndex = 57;
             // 
             // DigitalVoltmeterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 630);
+            this.ClientSize = new System.Drawing.Size(935, 636);
+            this.Controls.Add(this.textBoxState);
             this.Controls.Add(this.numericUpDownDI);
             this.Controls.Add(this.buttonGetCritical3DModel);
             this.Controls.Add(this.numericUpDownInitialStep);
@@ -643,6 +653,7 @@
         private System.Windows.Forms.Button buttonGetCritical3DModel;
         private System.Windows.Forms.NumericUpDown numericUpDownDI;
         private System.Windows.Forms.Label labelCriticalDI;
+        private System.Windows.Forms.TextBox textBoxState;
     }
 }
 
