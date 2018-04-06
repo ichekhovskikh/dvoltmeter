@@ -405,7 +405,7 @@ namespace DigitalVoltmeter
             {
                 emulator.SetDeltaParameter(minMaxDeltaParameter, i);
                 double deltaStepWithAccuracy = changingDeltaParameterStep;
-                while (deltaStepWithAccuracy * 2 > accuracy)
+                while (Math.Abs(deltaStepWithAccuracy) * 2 > accuracy)
                 {
                     bool needCorrecting = false;
                     while (ErrorChecking(emulator))
@@ -479,7 +479,7 @@ namespace DigitalVoltmeter
             {
                 emulator.SetDeltaParameter(minMaxDeltaParameter, i);
                 double deltaStepWithAccuracy = changingDeltaParameterStep;
-                while (deltaStepWithAccuracy * 2 > accuracy)
+                while (Math.Abs(deltaStepWithAccuracy) * 2 > accuracy)
                 {
                     bool needCorrecting = false;
                     while (ErrorChecking(emulator))

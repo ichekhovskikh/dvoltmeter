@@ -211,9 +211,9 @@ namespace DigitalVoltmeter.Forms
                 for (int i = 0; i < polygon.Vertexs.Count; i++)
                 {
                     Point3D vertex = polygon.Vertexs[i];
-                    vertexs.Add(new Point3D((int)((vertex.X * l1() + vertex.Y * l2()*10 + (vertex.Z * 1000 * l3())) / size) + movePosition.X,
-                                                (int)((vertex.X * m1() + vertex.Y * m2() * 10 + (vertex.Z * 1000 * m3())) / size) + movePosition.Y,
-                                                (int)((vertex.X * n1() + vertex.Y * n2() * 10 + (vertex.Z * 1000 * n3())) / size)));
+                    vertexs.Add(new Point3D((int)((vertex.X * l1() + vertex.Y * l2() + (vertex.Z * 1000 * l3())) / size) + movePosition.X,
+                                                (int)((vertex.X * m1() + vertex.Y * m2()  + (vertex.Z * 1000 * m3())) / size) + movePosition.Y,
+                                                (int)((vertex.X * n1() + vertex.Y * n2()  + (vertex.Z * 1000 * n3())) / size)));
                 }
                 for (int k = 0; k < vertexs.Count - 1; k++)
                 {
