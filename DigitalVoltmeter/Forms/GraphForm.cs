@@ -47,6 +47,12 @@ namespace DigitalVoltmeter.Forms
         {
             dataGridViewVect.Columns.Clear();
 
+            DataGridViewTextBoxColumn ind = new DataGridViewTextBoxColumn
+            {
+                Name = "№",
+                SortMode = DataGridViewColumnSortMode.Automatic,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            };
             DataGridViewTextBoxColumn x = new DataGridViewTextBoxColumn
             {
                 Name = "ΔK",
@@ -70,6 +76,7 @@ namespace DigitalVoltmeter.Forms
             y.DefaultCellStyle.ForeColor = yColor;
             z.DefaultCellStyle.ForeColor = zColor;
 
+            dataGridViewVect.Columns.Add(ind);
             dataGridViewVect.Columns.Add(x);
             dataGridViewVect.Columns.Add(y);
             dataGridViewVect.Columns.Add(z);
@@ -82,8 +89,8 @@ namespace DigitalVoltmeter.Forms
                     foreach (Point3D p3d in pp.Vertexs)
                         if (uniquePoints.FirstOrDefault(delegate (Point3D ppp) { return ppp.X == p3d.X && ppp.Y == p3d.Y && ppp.Z == p3d.Z; }) == null)
                             uniquePoints.Add(p3d);
-                foreach (Point3D p3d in uniquePoints)
-                    dataGridViewVect.Rows.Add(new object[] { p3d.X, p3d.Y, p3d.Z });
+                for (int i = 0; i < uniquePoints.Count; i++)
+                    dataGridViewVect.Rows.Add(new object[] { i, uniquePoints[i].X, uniquePoints[i].Y, uniquePoints[i].Z });
             }
         }
 
@@ -250,31 +257,55 @@ namespace DigitalVoltmeter.Forms
             pictureBox.Refresh();
         }
 
+        public PointF getVertexPoint(Point3D point, double size)
+        {
+            return getVertexPoint(point.X, point.Y, point.Z, size);
+        }
+        public PointF getVertexPoint(float x, float y, float z, double size)
+        {
+            return new PointF((float)(((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X), (float)(((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y));
+        }
         void DrawAxis(Graphics g)
         {
-            double arrowSpread = 5;
+            float arrowSpread = 5;
+            float arrowHalfSpread = arrowSpread / 2F;
             double size = Math.Pow(2, level);
-            double x = 0, y = 0, z = 0;
-            x = 100;
-            g.DrawLine(new Pen(xColor), (int)((0 * l1() + 0 * l2() + (0 * 1000 * l3())) / size) + movePosition.X, (int)((0 * m1() + 0 * m2() + (0 * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(xColor), (int)((x * 0.9 * l1() + (y - arrowSpread) * l2() + ((z - arrowSpread / 1000) * 1000 * l3())) / size) + movePosition.X, (int)((x * 0.9 * m1() + (y - arrowSpread) * m2() + ((z - arrowSpread / 1000) * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(xColor), (int)((x * 0.9 * l1() + (y + arrowSpread) * l2() + ((z - arrowSpread / 1000) * 1000 * l3())) / size) + movePosition.X, (int)((x * 0.9 * m1() + (y + arrowSpread) * m2() + ((z - arrowSpread / 1000) * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(xColor), (int)((x * 0.9 * l1() + (y - arrowSpread) * l2() + ((z + arrowSpread / 1000) * 1000 * l3())) / size) + movePosition.X, (int)((x * 0.9 * m1() + (y - arrowSpread) * m2() + ((z + arrowSpread / 1000) * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(xColor), (int)((x * 0.9 * l1() + (y + arrowSpread) * l2() + ((z + arrowSpread / 1000) * 1000 * l3())) / size) + movePosition.X, (int)((x * 0.9 * m1() + (y + arrowSpread) * m2() + ((z + arrowSpread / 1000) * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            x = 0;
-            y = 100;
-            g.DrawLine(new Pen(yColor), (int)((0 * l1() + 0 * l2() + (0 * 1000 * l3())) / size) + movePosition.X, (int)((0 * m1() + 0 * m2() + (0 * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(yColor), (int)(((x - arrowSpread) * l1() + y * 0.9 * l2() + ((z - arrowSpread / 1000) * 1000 * l3())) / size) + movePosition.X, (int)(((x - arrowSpread) * m1() + y * 0.9 * m2() + ((z - arrowSpread / 1000) * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(yColor), (int)(((x + arrowSpread) * l1() + y * 0.9 * l2() + ((z - arrowSpread / 1000) * 1000 * l3())) / size) + movePosition.X, (int)(((x + arrowSpread) * m1() + y * 0.9 * m2() + ((z - arrowSpread / 1000) * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(yColor), (int)(((x - arrowSpread) * l1() + y * 0.9 * l2() + ((z + arrowSpread / 1000) * 1000 * l3())) / size) + movePosition.X, (int)(((x - arrowSpread) * m1() + y * 0.9 * m2() + ((z + arrowSpread / 1000) * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(yColor), (int)(((x + arrowSpread) * l1() + y * 0.9 * l2() + ((z + arrowSpread / 1000) * 1000 * l3())) / size) + movePosition.X, (int)(((x + arrowSpread) * m1() + y * 0.9 * m2() + ((z + arrowSpread / 1000) * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            y = 0;
-            z = 0.1;
-            g.DrawLine(new Pen(zColor), (int)((0 * l1() + 0 * l2() + (0 * 1000 * l3())) / size) + movePosition.X, (int)((0 * m1() + 0 * m2() + (0 * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(zColor), (int)(((x - arrowSpread) * l1() + (y - arrowSpread) * l2() + (z * 0.9 * 1000 * l3())) / size) + movePosition.X, (int)(((x - arrowSpread) * m1() + (y - arrowSpread) * m2() + (z * 0.9 * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(zColor), (int)(((x + arrowSpread) * l1() + (y - arrowSpread) * l2() + (z * 0.9 * 1000 * l3())) / size) + movePosition.X, (int)(((x + arrowSpread) * m1() + (y - arrowSpread) * m2() + (z * 0.9 * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(zColor), (int)(((x - arrowSpread) * l1() + (y + arrowSpread) * l2() + (z * 0.9 * 1000 * l3())) / size) + movePosition.X, (int)(((x - arrowSpread) * m1() + (y + arrowSpread) * m2() + (z * 0.9 * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
-            g.DrawLine(new Pen(zColor), (int)(((x + arrowSpread) * l1() + (y + arrowSpread) * l2() + (z * 0.9 * 1000 * l3())) / size) + movePosition.X, (int)(((x + arrowSpread) * m1() + (y + arrowSpread) * m2() + (z * 0.9 * 1000 * m3())) / size) + movePosition.Y, (int)((x * l1() + y * l2() + (z * 1000 * l3())) / size) + movePosition.X, (int)((x * m1() + y * m2() + (z * 1000 * m3())) / size) + movePosition.Y);
+            Point3D vertex = new Point3D(0, 0, 0);
+            Point3D notVertex = new Point3D(0, 0, 0);
+            vertex.X = 100;
+            notVertex.X = -100;
+
+            
+
+            g.DrawLine(new Pen(xColor), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            for (int i = 1; i < 20; i++)
+                if (i != 10) g.DrawLine(new Pen(xColor), getVertexPoint(notVertex.X + (vertex.X - notVertex.X) / 20F * i, notVertex.Y - arrowHalfSpread, notVertex.Z - arrowHalfSpread / 1000, size), getVertexPoint(notVertex.X + (vertex.X - notVertex.X) / 20F * i, notVertex.Y + arrowHalfSpread, notVertex.Z + arrowHalfSpread / 1000, size));
+            vertex.X = 0;
+            vertex.Y = 100;
+            notVertex.X = 0;
+            notVertex.Y = -100;
+            g.DrawLine(new Pen(yColor), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(yColor), getVertexPoint(vertex.X - arrowSpread, vertex.Y * 0.9F, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(yColor), getVertexPoint(vertex.X + arrowSpread, vertex.Y * 0.9F, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(yColor), getVertexPoint(vertex.X - arrowSpread, vertex.Y * 0.9F, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(yColor), getVertexPoint(vertex.X + arrowSpread, vertex.Y * 0.9F, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            for (int i = 1; i < 20; i++)
+                if (i != 10) g.DrawLine(new Pen(yColor), getVertexPoint(notVertex.X - arrowHalfSpread, notVertex.Y + (vertex.Y - notVertex.Y) / 20F * i, notVertex.Z - arrowHalfSpread / 1000, size), getVertexPoint(notVertex.X + arrowHalfSpread, notVertex.Y + (vertex.Y - notVertex.Y) / 20F * i, notVertex.Z + arrowHalfSpread / 1000, size));
+            vertex.Y = 0;
+            vertex.Z = 0.1F;
+            notVertex.Y = 0;
+            notVertex.Z = -0.1F;
+            g.DrawLine(new Pen(zColor), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(zColor), getVertexPoint(vertex.X - arrowSpread, vertex.Y - arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(zColor), getVertexPoint(vertex.X + arrowSpread, vertex.Y - arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(zColor), getVertexPoint(vertex.X - arrowSpread, vertex.Y + arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(zColor), getVertexPoint(vertex.X + arrowSpread, vertex.Y + arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
+            for (int i = 1; i < 20; i++)
+                if (i != 10) g.DrawLine(new Pen(zColor), getVertexPoint(notVertex.X - arrowHalfSpread, notVertex.Y - arrowHalfSpread, notVertex.Z + (vertex.Z - notVertex.Z) / 20F * i, size), getVertexPoint(notVertex.X + arrowHalfSpread, notVertex.Y + arrowHalfSpread, notVertex.Z + (vertex.Z - notVertex.Z) / 20F * i, size));
         }
 
         private void trackBarY_Scroll(object sender, EventArgs e)
@@ -292,9 +323,9 @@ namespace DigitalVoltmeter.Forms
         private void dataGridViewVect_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || parrent == null) return;
-            parrent.DeltaK = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells[0].Value);
-            parrent.DeltaUsm = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells[1].Value);
-            parrent.DeltaI = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells[2].Value);
+            parrent.DeltaK = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells["ΔK"].Value);
+            parrent.DeltaUsm = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells["δсм"].Value);
+            parrent.DeltaI = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells["Δi"].Value);
             parrent.GetModelPerformClick();
         }
 
