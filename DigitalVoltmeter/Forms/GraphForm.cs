@@ -21,6 +21,7 @@ namespace DigitalVoltmeter.Forms
         Color xColor = Color.Red;
         Color yColor = Color.Blue;
         Color zColor = Color.Green;
+        int axisWidth = 2;
 
         private double level = 0; double alpha = 0, beta = 0, gamma = 0, pi = Math.PI / 180;
         private Point startPosition;
@@ -277,35 +278,35 @@ namespace DigitalVoltmeter.Forms
 
             
 
-            g.DrawLine(new Pen(xColor), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(xColor), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(xColor), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(xColor), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(xColor), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
             for (int i = 1; i < 20; i++)
-                if (i != 10) g.DrawLine(new Pen(xColor), getVertexPoint(notVertex.X + (vertex.X - notVertex.X) / 20F * i, notVertex.Y - arrowHalfSpread, notVertex.Z - arrowHalfSpread / 1000, size), getVertexPoint(notVertex.X + (vertex.X - notVertex.X) / 20F * i, notVertex.Y + arrowHalfSpread, notVertex.Z + arrowHalfSpread / 1000, size));
+                if (i != 10) g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(notVertex.X + (vertex.X - notVertex.X) / 20F * i, notVertex.Y - arrowHalfSpread, notVertex.Z - arrowHalfSpread / 1000, size), getVertexPoint(notVertex.X + (vertex.X - notVertex.X) / 20F * i, notVertex.Y + arrowHalfSpread, notVertex.Z + arrowHalfSpread / 1000, size));
             vertex.X = 0;
             vertex.Y = 100;
             notVertex.X = 0;
             notVertex.Y = -100;
-            g.DrawLine(new Pen(yColor), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(yColor), getVertexPoint(vertex.X - arrowSpread, vertex.Y * 0.9F, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(yColor), getVertexPoint(vertex.X + arrowSpread, vertex.Y * 0.9F, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(yColor), getVertexPoint(vertex.X - arrowSpread, vertex.Y * 0.9F, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(yColor), getVertexPoint(vertex.X + arrowSpread, vertex.Y * 0.9F, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(yColor, axisWidth), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(yColor, axisWidth), getVertexPoint(vertex.X - arrowSpread, vertex.Y * 0.9F, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(yColor, axisWidth), getVertexPoint(vertex.X + arrowSpread, vertex.Y * 0.9F, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(yColor, axisWidth), getVertexPoint(vertex.X - arrowSpread, vertex.Y * 0.9F, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(yColor, axisWidth), getVertexPoint(vertex.X + arrowSpread, vertex.Y * 0.9F, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
             for (int i = 1; i < 20; i++)
-                if (i != 10) g.DrawLine(new Pen(yColor), getVertexPoint(notVertex.X - arrowHalfSpread, notVertex.Y + (vertex.Y - notVertex.Y) / 20F * i, notVertex.Z - arrowHalfSpread / 1000, size), getVertexPoint(notVertex.X + arrowHalfSpread, notVertex.Y + (vertex.Y - notVertex.Y) / 20F * i, notVertex.Z + arrowHalfSpread / 1000, size));
+                if (i != 10) g.DrawLine(new Pen(yColor, axisWidth), getVertexPoint(notVertex.X - arrowHalfSpread, notVertex.Y + (vertex.Y - notVertex.Y) / 20F * i, notVertex.Z - arrowHalfSpread / 1000, size), getVertexPoint(notVertex.X + arrowHalfSpread, notVertex.Y + (vertex.Y - notVertex.Y) / 20F * i, notVertex.Z + arrowHalfSpread / 1000, size));
             vertex.Y = 0;
             vertex.Z = 0.1F;
             notVertex.Y = 0;
             notVertex.Z = -0.1F;
-            g.DrawLine(new Pen(zColor), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(zColor), getVertexPoint(vertex.X - arrowSpread, vertex.Y - arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(zColor), getVertexPoint(vertex.X + arrowSpread, vertex.Y - arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(zColor), getVertexPoint(vertex.X - arrowSpread, vertex.Y + arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(zColor), getVertexPoint(vertex.X + arrowSpread, vertex.Y + arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(zColor, axisWidth), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(zColor, axisWidth), getVertexPoint(vertex.X - arrowSpread, vertex.Y - arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(zColor, axisWidth), getVertexPoint(vertex.X + arrowSpread, vertex.Y - arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(zColor, axisWidth), getVertexPoint(vertex.X - arrowSpread, vertex.Y + arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(zColor, axisWidth), getVertexPoint(vertex.X + arrowSpread, vertex.Y + arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
             for (int i = 1; i < 20; i++)
-                if (i != 10) g.DrawLine(new Pen(zColor), getVertexPoint(notVertex.X - arrowHalfSpread, notVertex.Y - arrowHalfSpread, notVertex.Z + (vertex.Z - notVertex.Z) / 20F * i, size), getVertexPoint(notVertex.X + arrowHalfSpread, notVertex.Y + arrowHalfSpread, notVertex.Z + (vertex.Z - notVertex.Z) / 20F * i, size));
+                if (i != 10) g.DrawLine(new Pen(zColor, axisWidth), getVertexPoint(notVertex.X - arrowHalfSpread, notVertex.Y - arrowHalfSpread, notVertex.Z + (vertex.Z - notVertex.Z) / 20F * i, size), getVertexPoint(notVertex.X + arrowHalfSpread, notVertex.Y + arrowHalfSpread, notVertex.Z + (vertex.Z - notVertex.Z) / 20F * i, size));
         }
 
         private void trackBarY_Scroll(object sender, EventArgs e)
@@ -328,6 +329,7 @@ namespace DigitalVoltmeter.Forms
             parrent.DeltaI = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells["Δi"].Value);
             parrent.GetModelPerformClick();
         }
+
 
         private void GraphForm_MouseWheel(object sender, MouseEventArgs e)
         {

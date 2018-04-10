@@ -81,3 +81,4 @@ D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
 D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
 C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.GraphExpandingForm.resources
 C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Forms.GraphForm.resources
+C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Forms.GraphForm.resources

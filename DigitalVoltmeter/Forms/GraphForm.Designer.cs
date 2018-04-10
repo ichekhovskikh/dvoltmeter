@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.trackBarX = new System.Windows.Forms.TrackBar();
             this.trackBarY = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVect)).BeginInit();
             this.GroupRotation.SuspendLayout();
@@ -47,10 +48,9 @@
             this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.Location = new System.Drawing.Point(14, 14);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox.Location = new System.Drawing.Point(9, 9);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(662, 634);
+            this.pictureBox.Size = new System.Drawing.Size(441, 419);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 30;
             this.pictureBox.TabStop = false;
@@ -68,15 +68,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewVect.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dataGridViewVect.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewVect.Location = new System.Drawing.Point(684, 17);
-            this.dataGridViewVect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridViewVect.Location = new System.Drawing.Point(456, 11);
             this.dataGridViewVect.MultiSelect = false;
             this.dataGridViewVect.Name = "dataGridViewVect";
             this.dataGridViewVect.ReadOnly = true;
             this.dataGridViewVect.RowHeadersVisible = false;
             this.dataGridViewVect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewVect.ShowCellToolTips = false;
-            this.dataGridViewVect.Size = new System.Drawing.Size(351, 412);
+            this.dataGridViewVect.Size = new System.Drawing.Size(234, 296);
             this.dataGridViewVect.TabIndex = 36;
             this.dataGridViewVect.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVect_CellDoubleClick);
             // 
@@ -87,11 +86,9 @@
             this.GroupRotation.Controls.Add(this.label3);
             this.GroupRotation.Controls.Add(this.trackBarX);
             this.GroupRotation.Controls.Add(this.trackBarY);
-            this.GroupRotation.Location = new System.Drawing.Point(684, 438);
-            this.GroupRotation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.GroupRotation.Location = new System.Drawing.Point(456, 313);
             this.GroupRotation.Name = "GroupRotation";
-            this.GroupRotation.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.GroupRotation.Size = new System.Drawing.Size(346, 206);
+            this.GroupRotation.Size = new System.Drawing.Size(231, 134);
             this.GroupRotation.TabIndex = 37;
             this.GroupRotation.TabStop = false;
             this.GroupRotation.Text = "Rotation";
@@ -99,52 +96,60 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 103);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(6, 67);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 20);
+            this.label4.Size = new System.Drawing.Size(14, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "Y";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 25);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(6, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 20);
+            this.label3.Size = new System.Drawing.Size(14, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "X";
             // 
             // trackBarX
             // 
-            this.trackBarX.Location = new System.Drawing.Point(9, 49);
-            this.trackBarX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.trackBarX.Location = new System.Drawing.Point(6, 32);
             this.trackBarX.Maximum = 360;
             this.trackBarX.Name = "trackBarX";
-            this.trackBarX.Size = new System.Drawing.Size(328, 45);
+            this.trackBarX.Size = new System.Drawing.Size(219, 45);
             this.trackBarX.TabIndex = 0;
             this.trackBarX.Scroll += new System.EventHandler(this.trackBarX_Scroll);
             // 
             // trackBarY
             // 
-            this.trackBarY.Location = new System.Drawing.Point(9, 128);
-            this.trackBarY.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.trackBarY.Location = new System.Drawing.Point(6, 83);
             this.trackBarY.Maximum = 360;
             this.trackBarY.Name = "trackBarY";
-            this.trackBarY.Size = new System.Drawing.Size(328, 45);
+            this.trackBarY.Size = new System.Drawing.Size(219, 45);
             this.trackBarY.TabIndex = 0;
             this.trackBarY.Scroll += new System.EventHandler(this.trackBarY_Scroll);
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 434);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(255, 13);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Цена деления по осям: ΔK=10 ; Δi=0.01 ;  δсм=10";
+            // 
             // GraphForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1048, 663);
+            this.ClientSize = new System.Drawing.Size(699, 459);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.GroupRotation);
             this.Controls.Add(this.dataGridViewVect);
             this.Controls.Add(this.pictureBox);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GraphForm";
             this.Text = "GraphForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
@@ -154,6 +159,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarY)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -165,5 +171,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TrackBar trackBarY;
         private System.Windows.Forms.TrackBar trackBarX;
+        private System.Windows.Forms.Label label1;
     }
 }
