@@ -29,6 +29,7 @@ namespace DigitalVoltmeter.Forms
 
         public List<Point3D> Area { get; set; }
         public List<ParamsPolygon> Polygons { get; set; }
+        private double k = 0;
 
         public GraphForm() : this(null, null) { }
         public GraphForm(List<ParamsPolygon> Polygons) : this(Polygons, null) { }
@@ -38,6 +39,7 @@ namespace DigitalVoltmeter.Forms
             MouseWheel += GraphForm_MouseWheel;
             this.parrent = parrent;
             this.Polygons = Polygons;
+            k = parrent.K;
 
             InitializeDataGrid();
 
@@ -198,7 +200,7 @@ namespace DigitalVoltmeter.Forms
             if (Polygons == null)
                 return;
 
-            double size = Math.Pow(2, level);
+            double size = Math.Pow(2, level) *k;
             List<Polygon> polygons = new List<Polygon>();
             Bitmap bmp = new Bitmap(Properties.Resources.background, pictureBox.Size);
             Graphics g = Graphics.FromImage(bmp);
@@ -219,15 +221,17 @@ namespace DigitalVoltmeter.Forms
                 for (int i = 0; i < polygon.Vertexs.Count; i++)
                 {
                     Point3D vertex = polygon.Vertexs[i];
-                    vertexs.Add(new Point3D((int)((vertex.X * l1() + vertex.Y * l2() + (vertex.Z * 1000 * l3())) / size) + movePosition.X,
-                                                (int)((vertex.X * m1() + vertex.Y * m2()  + (vertex.Z * 1000 * m3())) / size) + movePosition.Y,
-                                                (int)((vertex.X * n1() + vertex.Y * n2()  + (vertex.Z * 1000 * n3())) / size)));
+                    vertexs.Add(new Point3D((int)((vertex.X * l1() + vertex.Y * l2() + (vertex.Z * l3())) / (size * 0.001)) + movePosition.X,
+                                                (int)((vertex.X * m1() + vertex.Y * m2()  + (vertex.Z * m3())) / (size * 0.001)) + movePosition.Y,
+                                                (int)((vertex.X * n1() + vertex.Y * n2()  + (vertex.Z * n3())) / (size * 0.001))));
                 }
                 for (int k = 0; k < vertexs.Count - 1; k++)
                 {
-                    g.DrawLine(new Pen(Brushes.Black), vertexs[k].X, vertexs[k].Y, vertexs[k + 1].X, vertexs[k + 1].Y);
+                    //g.DrawLine(new Pen(Brushes.Black), vertexs[k].X, vertexs[k].Y, vertexs[k + 1].X, vertexs[k + 1].Y);
+                    g.DrawEllipse(Pens.Black, vertexs[k].X, vertexs[k].Y, 1, 1);
                 }
-                g.DrawLine(new Pen(Brushes.Black), vertexs[vertexs.Count - 1].X, vertexs[vertexs.Count - 1].Y, vertexs[0].X, vertexs[0].Y);
+                g.DrawEllipse(Pens.Black, vertexs[vertexs.Count - 1].X, vertexs[vertexs.Count - 1].Y, 1, 1);
+                //g.DrawLine(new Pen(Brushes.Black), vertexs[vertexs.Count - 1].X, vertexs[vertexs.Count - 1].Y, vertexs[0].X, vertexs[0].Y);
             }
 
 
@@ -270,7 +274,7 @@ namespace DigitalVoltmeter.Forms
         {
             float arrowSpread = 5;
             float arrowHalfSpread = arrowSpread / 2F;
-            double size = Math.Pow(2, level);
+            double size = Math.Pow(2, level) * k;
             Point3D vertex = new Point3D(0, 0, 0);
             Point3D notVertex = new Point3D(0, 0, 0);
             vertex.X = 100;

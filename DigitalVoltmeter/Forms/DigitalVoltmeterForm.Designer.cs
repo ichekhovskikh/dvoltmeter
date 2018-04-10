@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonGetFormules = new System.Windows.Forms.Button();
@@ -85,7 +85,7 @@
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.Location = new System.Drawing.Point(169, 833);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(1107, 26);
             this.progressBar.TabIndex = 13;
@@ -93,7 +93,7 @@
             // label2
             // 
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(12, 16);
+            this.label2.Location = new System.Drawing.Point(13, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(566, 29);
@@ -105,7 +105,7 @@
             // 
             this.buttonGetFormules.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonGetFormules.Location = new System.Drawing.Point(12, 588);
-            this.buttonGetFormules.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonGetFormules.Margin = new System.Windows.Forms.Padding(4);
             this.buttonGetFormules.Name = "buttonGetFormules";
             this.buttonGetFormules.Size = new System.Drawing.Size(177, 28);
             this.buttonGetFormules.TabIndex = 10;
@@ -141,7 +141,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.richTextBox.Location = new System.Drawing.Point(16, 624);
-            this.richTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.ReadOnly = true;
             this.richTextBox.Size = new System.Drawing.Size(1217, 116);
@@ -154,7 +154,7 @@
             this.checkBoxOutToWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxOutToWord.AutoSize = true;
             this.checkBoxOutToWord.Location = new System.Drawing.Point(197, 593);
-            this.checkBoxOutToWord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxOutToWord.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxOutToWord.Name = "checkBoxOutToWord";
             this.checkBoxOutToWord.Size = new System.Drawing.Size(160, 21);
             this.checkBoxOutToWord.TabIndex = 15;
@@ -215,7 +215,7 @@
             // buttonGetModel
             // 
             this.buttonGetModel.Location = new System.Drawing.Point(12, 236);
-            this.buttonGetModel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonGetModel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonGetModel.Name = "buttonGetModel";
             this.buttonGetModel.Size = new System.Drawing.Size(275, 30);
             this.buttonGetModel.TabIndex = 27;
@@ -228,23 +228,23 @@
             this.mainChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.mainChart.ChartAreas.Add(chartArea2);
-            this.mainChart.Location = new System.Drawing.Point(295, 49);
-            this.mainChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            chartArea1.Name = "ChartArea1";
+            this.mainChart.ChartAreas.Add(chartArea1);
+            this.mainChart.Location = new System.Drawing.Point(294, 48);
+            this.mainChart.Margin = new System.Windows.Forms.Padding(4);
             this.mainChart.Name = "mainChart";
             this.mainChart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mainChart.Size = new System.Drawing.Size(587, 517);
             this.mainChart.TabIndex = 33;
-            title2.Name = "Title1";
-            title2.Text = "Входное напряжение";
-            this.mainChart.Titles.Add(title2);
+            title1.Name = "Title1";
+            title1.Text = "Входное напряжение";
+            this.mainChart.Titles.Add(title1);
             // 
             // buttonExpand
             // 
             this.buttonExpand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExpand.Location = new System.Drawing.Point(789, 569);
-            this.buttonExpand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExpand.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExpand.Name = "buttonExpand";
             this.buttonExpand.Size = new System.Drawing.Size(91, 28);
             this.buttonExpand.TabIndex = 34;
@@ -264,7 +264,7 @@
             this.dataGridViewVect.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dataGridViewVect.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewVect.Location = new System.Drawing.Point(889, 14);
-            this.dataGridViewVect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewVect.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewVect.MultiSelect = false;
             this.dataGridViewVect.Name = "dataGridViewVect";
             this.dataGridViewVect.ReadOnly = true;
@@ -302,7 +302,7 @@
             // 
             this.buttonCriticalDK.BackColor = System.Drawing.Color.Red;
             this.buttonCriticalDK.Location = new System.Drawing.Point(241, 20);
-            this.buttonCriticalDK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCriticalDK.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCriticalDK.Name = "buttonCriticalDK";
             this.buttonCriticalDK.Size = new System.Drawing.Size(21, 25);
             this.buttonCriticalDK.TabIndex = 39;
@@ -313,7 +313,7 @@
             // 
             this.buttonCriticalDi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonCriticalDi.Location = new System.Drawing.Point(241, 62);
-            this.buttonCriticalDi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCriticalDi.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCriticalDi.Name = "buttonCriticalDi";
             this.buttonCriticalDi.Size = new System.Drawing.Size(21, 25);
             this.buttonCriticalDi.TabIndex = 40;
@@ -324,7 +324,7 @@
             // 
             this.buttonCritical.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonCritical.Location = new System.Drawing.Point(241, 103);
-            this.buttonCritical.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCritical.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCritical.Name = "buttonCritical";
             this.buttonCritical.Size = new System.Drawing.Size(21, 25);
             this.buttonCritical.TabIndex = 41;
@@ -334,7 +334,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(12, 273);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(275, 46);
             this.button1.TabIndex = 42;
@@ -374,9 +374,9 @@
             this.groupBoxCriticalValues.Controls.Add(this.buttonCriticalDi);
             this.groupBoxCriticalValues.Controls.Add(this.buttonCritical);
             this.groupBoxCriticalValues.Location = new System.Drawing.Point(12, 326);
-            this.groupBoxCriticalValues.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxCriticalValues.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxCriticalValues.Name = "groupBoxCriticalValues";
-            this.groupBoxCriticalValues.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxCriticalValues.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxCriticalValues.Size = new System.Drawing.Size(275, 134);
             this.groupBoxCriticalValues.TabIndex = 48;
             this.groupBoxCriticalValues.TabStop = false;
@@ -426,7 +426,7 @@
             // numericUpDownN
             // 
             this.numericUpDownN.Location = new System.Drawing.Point(37, 49);
-            this.numericUpDownN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownN.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownN.Maximum = new decimal(new int[] {
             16,
             0,
@@ -456,7 +456,7 @@
             0,
             0});
             this.numericUpDownK.Location = new System.Drawing.Point(37, 81);
-            this.numericUpDownK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownK.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownK.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -466,7 +466,7 @@
             this.numericUpDownK.Size = new System.Drawing.Size(99, 22);
             this.numericUpDownK.TabIndex = 50;
             this.numericUpDownK.Value = new decimal(new int[] {
-            1000,
+            1,
             0,
             0,
             0});
@@ -475,7 +475,7 @@
             // 
             this.numericUpDownDK.DecimalPlaces = 10;
             this.numericUpDownDK.Location = new System.Drawing.Point(37, 113);
-            this.numericUpDownDK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownDK.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownDK.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -494,7 +494,7 @@
             // 
             this.numericUpDownDUsm.DecimalPlaces = 10;
             this.numericUpDownDUsm.Location = new System.Drawing.Point(37, 177);
-            this.numericUpDownDUsm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownDUsm.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownDUsm.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -518,7 +518,7 @@
             0,
             196608});
             this.numericUpDownAccuracy.Location = new System.Drawing.Point(217, 49);
-            this.numericUpDownAccuracy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownAccuracy.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownAccuracy.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -537,7 +537,7 @@
             // 
             this.numericUpDownInitialStep.DecimalPlaces = 4;
             this.numericUpDownInitialStep.Location = new System.Drawing.Point(217, 81);
-            this.numericUpDownInitialStep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownInitialStep.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownInitialStep.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -560,7 +560,7 @@
             // buttonGetCritical3DModel
             // 
             this.buttonGetCritical3DModel.Location = new System.Drawing.Point(13, 468);
-            this.buttonGetCritical3DModel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonGetCritical3DModel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonGetCritical3DModel.Name = "buttonGetCritical3DModel";
             this.buttonGetCritical3DModel.Size = new System.Drawing.Size(275, 28);
             this.buttonGetCritical3DModel.TabIndex = 55;
@@ -572,7 +572,7 @@
             // 
             this.numericUpDownDI.DecimalPlaces = 10;
             this.numericUpDownDI.Location = new System.Drawing.Point(37, 145);
-            this.numericUpDownDI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownDI.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownDI.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -592,7 +592,7 @@
             this.textBoxState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxState.Location = new System.Drawing.Point(16, 748);
-            this.textBoxState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxState.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxState.Name = "textBoxState";
             this.textBoxState.ReadOnly = true;
             this.textBoxState.Size = new System.Drawing.Size(1213, 22);

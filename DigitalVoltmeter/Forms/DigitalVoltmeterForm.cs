@@ -505,6 +505,12 @@ namespace DigitalVoltmeter
             graphForm.Show();
         }
 
+        public double K
+        {
+            get { return Convert.ToDouble(numericUpDownK.Value); }
+            set { numericUpDownK.Value = Convert.ToDecimal(value); }
+        }
+
         public double DeltaK
         {
             get { return Convert.ToDouble(numericUpDownDK.Value); }
