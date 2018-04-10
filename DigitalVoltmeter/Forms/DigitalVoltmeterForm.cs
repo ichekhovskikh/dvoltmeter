@@ -480,10 +480,10 @@ namespace DigitalVoltmeter
 
         private async void buttonGetCritical3DModel_Click(object sender, EventArgs e)
         {
-            await BuildModel();
+            BuildModel();
         }
 
-        private async Task BuildModel()
+        private void BuildModel()
         {
             int n = 0;
             double coeff = 0;
@@ -497,11 +497,13 @@ namespace DigitalVoltmeter
                 MessageBox.Show("Неверный формат входных параметров!");
                 return;
             }
-            int countOfResolution = 20;
+            int countOfResolution = 9;
 
             CriticalParamsService.TextBoxLog = textBoxState;
-            List<ParamsPolygon> polygons = await CriticalParamsService.GetPolygonsOfCriticalArea(n, coeff, countOfResolution, 1);
-            GraphForm graphForm = new GraphForm(polygons, this);
+            //List<ParamsPolygon> polygons = await CriticalParamsService.GetPolygonsOfCriticalArea(n, coeff, countOfResolution, 1);
+            var paramsModel3D = CriticalParamsService.GetCriticalArea(n, coeff, countOfResolution, 1);
+            //GraphForm graphForm = new GraphForm(polygons, this);
+            GraphForm graphForm = new GraphForm(paramsModel3D, this);
             graphForm.Show();
         }
 

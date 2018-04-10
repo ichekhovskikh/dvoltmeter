@@ -76,7 +76,9 @@
   <ItemGroup>
     <Compile Include="DAC\CriticalParamsService.cs" />
     <Compile Include="DAC\DACService.cs" />
+    <Compile Include="DAC\GraphicsService.cs" />
     <Compile Include="DAC\ParamsContainer.cs" />
+    <Compile Include="DAC\ParamsModel3D.cs" />
     <Compile Include="DAC\ParamsPolygon.cs" />
     <Compile Include="Forms\GraphForm.cs">
       <SubType>Form</SubType>

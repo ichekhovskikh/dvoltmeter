@@ -31,7 +31,10 @@ namespace DigitalVoltmeter.Forms
         public List<ParamsPolygon> Polygons { get; set; }
         private double k = 0;
 
-        public GraphForm() : this(null, null) { }
+        public GraphicsService GraphicsService { get; set; }
+        public ParamsModel3D ParamsModel { get; set; }
+
+        //public GraphForm() : this(null, null) { }
         public GraphForm(List<ParamsPolygon> Polygons) : this(Polygons, null) { }
         public GraphForm(List<ParamsPolygon> Polygons, DigitalVoltmeterForm parrent)
         {
@@ -41,6 +44,18 @@ namespace DigitalVoltmeter.Forms
             this.Polygons = Polygons;
             k = parrent.K;
 
+            InitializeDataGrid();
+
+            RefreshGraph();
+        }
+
+        public GraphForm(ParamsModel3D paramsModel3D, DigitalVoltmeterForm parrent)
+        {
+            InitializeComponent();
+            MouseWheel += GraphForm_MouseWheel;
+            this.parrent = parrent;
+            GraphicsService = new GraphicsService();
+            ParamsModel = paramsModel3D;
             InitializeDataGrid();
 
             RefreshGraph();
@@ -86,15 +101,12 @@ namespace DigitalVoltmeter.Forms
 
             dataGridViewVect.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
-            {
-                List<Point3D> uniquePoints = new List<Point3D>() { };
-                foreach (ParamsPolygon pp in Polygons)
-                    foreach (Point3D p3d in pp.Vertexs)
-                        if (uniquePoints.FirstOrDefault(delegate (Point3D ppp) { return ppp.X == p3d.X && ppp.Y == p3d.Y && ppp.Z == p3d.Z; }) == null)
-                            uniquePoints.Add(p3d);
-                for (int i = 0; i < uniquePoints.Count; i++)
-                    dataGridViewVect.Rows.Add(new object[] { i, uniquePoints[i].X, uniquePoints[i].Y, uniquePoints[i].Z });
-            }
+            List<Point3D> uniquePoints = new List<Point3D>() { };
+            foreach (Point3D p3d in ParamsModel.PointsOfArea)
+                if (uniquePoints.FirstOrDefault(delegate(Point3D ppp) { return ppp.X == p3d.X && ppp.Y == p3d.Y && ppp.Z == p3d.Z; }) == null)
+                    uniquePoints.Add(p3d);
+            for (int i = 0; i < uniquePoints.Count; i++)
+                dataGridViewVect.Rows.Add(new object[] { i, uniquePoints[i].X, uniquePoints[i].Y, uniquePoints[i].Z });
         }
 
         class Polygon
@@ -197,54 +209,19 @@ namespace DigitalVoltmeter.Forms
 
         private void RefreshGraph()
         {
-            if (Polygons == null)
+            if (GraphicsService == null || ParamsModel == null)
                 return;
 
-            double size = Math.Pow(2, level) *k;
+            double size = Math.Pow(2, level);
             List<Polygon> polygons = new List<Polygon>();
             Bitmap bmp = new Bitmap(Properties.Resources.background, pictureBox.Size);
             Graphics g = Graphics.FromImage(bmp);
             List<Point3D> pointsFor2D = new List<Point3D>(), circle_down = new List<Point3D>();
 
-            //for (int i = 0; i < Area.Count; i++)
-            //{
-            //    pointsFor2D.Add(new Point3D((int)((Area[i].X * l1() + Area[i].Y * l2() + (Area[i].Z * 1000 * l3())) / size) + movePosition.X,
-            //                                (int)((Area[i].X * m1() + Area[i].Y * m2() + (Area[i].Z * 1000 * m3())) / size) + movePosition.Y,
-            //                                (int)((Area[i].X * n1() + Area[i].Y * n2() + (Area[i].Z * 1000 * n3())) / size)));
-            //}
-
+            TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.PointsOfArea, size);
+            TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.PointsOfWalls, size);
             DrawAxis(g);
-            //Полигоны
-            foreach (ParamsPolygon polygon in Polygons)
-            {
-                List<Point3D> vertexs = new List<Point3D>();
-                for (int i = 0; i < polygon.Vertexs.Count; i++)
-                {
-                    Point3D vertex = polygon.Vertexs[i];
-                    vertexs.Add(new Point3D((int)((vertex.X * l1() + vertex.Y * l2() + (vertex.Z * l3())) / (size * 0.001)) + movePosition.X,
-                                                (int)((vertex.X * m1() + vertex.Y * m2()  + (vertex.Z * m3())) / (size * 0.001)) + movePosition.Y,
-                                                (int)((vertex.X * n1() + vertex.Y * n2()  + (vertex.Z * n3())) / (size * 0.001))));
-                }
-                for (int k = 0; k < vertexs.Count - 1; k++)
-                {
-                    //g.DrawLine(new Pen(Brushes.Black), vertexs[k].X, vertexs[k].Y, vertexs[k + 1].X, vertexs[k + 1].Y);
-                    g.DrawEllipse(Pens.Black, vertexs[k].X, vertexs[k].Y, 1, 1);
-                }
-                g.DrawEllipse(Pens.Black, vertexs[vertexs.Count - 1].X, vertexs[vertexs.Count - 1].Y, 1, 1);
-                //g.DrawLine(new Pen(Brushes.Black), vertexs[vertexs.Count - 1].X, vertexs[vertexs.Count - 1].Y, vertexs[0].X, vertexs[0].Y);
-            }
-
-
-            //for (int i = 0; i < pointsFor2D.Count; i++)
-            //{
-            //    polygons.Add(new Polygon(pointsFor2D[i++], pointsFor2D[i++], pointsFor2D[i++], pointsFor2D[i]));
-            //}
-
-            //for (int i = 0; i < pointsFor2D.Count - 1; i++)
-            //{
-            //    g.DrawLine(new Pen(Brushes.Black), pointsFor2D[i].X, pointsFor2D[i].Y, pointsFor2D[i + 1].X, pointsFor2D[i + 1].Y);
-            //}
-
+            
             /* Как использовать художника
             List<double[]> order = SortArt(polygons);
             for (int i = 0; i < polygons.Count; i++)
@@ -257,9 +234,22 @@ namespace DigitalVoltmeter.Forms
                                                  polygons[(int)order[i][1]].p);
             }
             */
-
             pictureBox.Image = bmp;
             pictureBox.Refresh();
+        }
+
+        private void TransformTo2DAndDrawPoints(Graphics g, Pen pen, List<Point3D> points, double size)
+        {
+            List<Point3D> pointsFor2D = new List<Point3D>();
+            for (int i = 0; i < points.Count; i++)
+            {
+                pointsFor2D.Add(new Point3D((int)((points[i].X * l1() + points[i].Y * l2() + (points[i].Z * l3())) / (size*0.001)) + movePosition.X,
+                                            (int)((points[i].X * m1() + points[i].Y * m2() + (points[i].Z * m3())) / (size * 0.001)) + movePosition.Y,
+                                            (int)((points[i].X * n1() + points[i].Y * n2() + (points[i].Z * n3())) / (size * 0.001))));
+
+            }
+            GraphicsService.DrawSurface(g, pen, pointsFor2D);
+
         }
 
         public PointF getVertexPoint(Point3D point, double size)
@@ -279,9 +269,9 @@ namespace DigitalVoltmeter.Forms
             Point3D notVertex = new Point3D(0, 0, 0);
             vertex.X = 100;
             notVertex.X = -100;
+            Font font = new Font("Arial", 10, FontStyle.Bold);
 
-            
-
+            g.DrawString("ΔK", font, new SolidBrush(xColor), getVertexPoint(vertex, size));
             g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
             g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
             g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
@@ -293,6 +283,7 @@ namespace DigitalVoltmeter.Forms
             vertex.Y = 100;
             notVertex.X = 0;
             notVertex.Y = -100;
+            g.DrawString("δсм", font, new SolidBrush(yColor), getVertexPoint(vertex, size));
             g.DrawLine(new Pen(yColor, axisWidth), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
             g.DrawLine(new Pen(yColor, axisWidth), getVertexPoint(vertex.X - arrowSpread, vertex.Y * 0.9F, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
             g.DrawLine(new Pen(yColor, axisWidth), getVertexPoint(vertex.X + arrowSpread, vertex.Y * 0.9F, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
@@ -304,6 +295,7 @@ namespace DigitalVoltmeter.Forms
             vertex.Z = 0.1F;
             notVertex.Y = 0;
             notVertex.Z = -0.1F;
+            g.DrawString("Δi", font, new SolidBrush(zColor), getVertexPoint(vertex, size));
             g.DrawLine(new Pen(zColor, axisWidth), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
             g.DrawLine(new Pen(zColor, axisWidth), getVertexPoint(vertex.X - arrowSpread, vertex.Y - arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
             g.DrawLine(new Pen(zColor, axisWidth), getVertexPoint(vertex.X + arrowSpread, vertex.Y - arrowSpread, vertex.Z * 0.9F, size), getVertexPoint(vertex, size));
