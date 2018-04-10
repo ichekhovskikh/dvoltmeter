@@ -160,7 +160,8 @@ namespace DigitalVoltmeter
                 excelTools.Borders(row, column, cellWidth, values.Length * cellHeight, borderWeight, borderStyle);
         }
 
-        public static ParamsContainer TestingDelta(int n, double coeff, DACEmulator.Delta delta, double initialStep = 1, double accuracy = 0.0001, double deltaCoeff = 0, double deltaIndex = 0, double deltaSM = 0)
+        public static ParamsContainer TestingDelta(int n, double coeff, DACEmulator.Delta delta, double initialStep = 1, double accuracy = 0.0001, 
+            double deltaCoeff = 0, double deltaIndex = 0, double deltaSM = 0, bool isAllowedValues = false)
         {
             int countNumbers = (int)Math.Pow(2, n);
             List<int> indexes = new List<int>();
@@ -193,6 +194,14 @@ namespace DigitalVoltmeter
                 else if (delta == DACEmulator.Delta.Index) deltaIndex -= initialStep;
                 else if (delta == DACEmulator.Delta.SM) deltaSM -= initialStep;
                 initialStep /= 2;
+            }
+
+            //Корректировка значений, если необходимо
+            if (isAllowedValues)
+            {
+                if (delta == DACEmulator.Delta.Coeff) emulator.DeltaCoeff -= initialStep*2;
+                else if (delta == DACEmulator.Delta.Index) emulator.DeltaIndex -= initialStep * 2;
+                else if (delta == DACEmulator.Delta.SM) emulator.DeltaSM -= initialStep * 2;
             }
 
             for (int x = 0; x < countNumbers; x++)
@@ -396,8 +405,10 @@ namespace DigitalVoltmeter
         private static List<Point3D> GetPointsOfCriticalArea(DACEmulator emulator, DACEmulator.Delta minMaxDeltaParameter, DACEmulator.Delta changingDeltaParameter, double minMaxDeltaParameterStep = 1, double changingDeltaParameterStep = 1, double accuracy = 0.0001)
         {
             List<Point3D> area = new List<Point3D>();
-            double deltaMin = TestingDelta(emulator.N, emulator.Coeff, minMaxDeltaParameter, -minMaxDeltaParameterStep, accuracy, emulator.DeltaCoeff, emulator.DeltaIndex, emulator.DeltaSM).GetDeltaParameter(minMaxDeltaParameter);
-            double deltaMax = TestingDelta(emulator.N, emulator.Coeff, minMaxDeltaParameter, minMaxDeltaParameterStep, accuracy, emulator.DeltaCoeff, emulator.DeltaIndex, emulator.DeltaSM).GetDeltaParameter(minMaxDeltaParameter);
+            double deltaMin = TestingDelta(emulator.N, emulator.Coeff, minMaxDeltaParameter, -minMaxDeltaParameterStep, accuracy, emulator.DeltaCoeff,
+                emulator.DeltaIndex, emulator.DeltaSM, true).GetDeltaParameter(minMaxDeltaParameter);
+            double deltaMax = TestingDelta(emulator.N, emulator.Coeff, minMaxDeltaParameter, minMaxDeltaParameterStep, accuracy, emulator.DeltaCoeff,
+                emulator.DeltaIndex, emulator.DeltaSM, true).GetDeltaParameter(minMaxDeltaParameter);
 
             double step = (deltaMax - deltaMin) / (minMaxDeltaParameterStep - 1);
             double i = deltaMin;
