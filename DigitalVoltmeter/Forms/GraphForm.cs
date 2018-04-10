@@ -274,10 +274,10 @@ namespace DigitalVoltmeter.Forms
 
             g.DrawString("ΔK", font, new SolidBrush(xColor), getVertexPoint(vertex, size));
             g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(notVertex, size), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z - arrowSpread / 1000, size*1000), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z - arrowSpread / 1000, size * 1000), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z + arrowSpread / 1000, size * 1000), getVertexPoint(vertex, size));
-            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z + arrowSpread / 1000, size * 1000), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z - arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y - arrowSpread, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
+            g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(vertex.X * 0.9F, vertex.Y + arrowSpread, vertex.Z + arrowSpread / 1000, size), getVertexPoint(vertex, size));
             for (int i = 1; i < 20; i++)
                 if (i != 10) g.DrawLine(new Pen(xColor, axisWidth), getVertexPoint(notVertex.X + (vertex.X - notVertex.X) / 20F * i, notVertex.Y - arrowHalfSpread, notVertex.Z - arrowHalfSpread / 1000, size), getVertexPoint(notVertex.X + (vertex.X - notVertex.X) / 20F * i, notVertex.Y + arrowHalfSpread, notVertex.Z + arrowHalfSpread / 1000, size));
             vertex.X = 0;
