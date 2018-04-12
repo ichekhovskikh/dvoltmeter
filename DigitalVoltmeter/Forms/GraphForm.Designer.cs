@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.dataGridViewVect = new System.Windows.Forms.DataGridView();
             this.GroupRotation = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -36,26 +35,13 @@
             this.trackBarX = new System.Windows.Forms.TrackBar();
             this.trackBarY = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVect)).BeginInit();
             this.GroupRotation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.Location = new System.Drawing.Point(9, 9);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(441, 419);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox.TabIndex = 30;
-            this.pictureBox.TabStop = false;
-            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
-            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
             // 
             // dataGridViewVect
             // 
@@ -135,9 +121,23 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 434);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(255, 13);
+            this.label1.Size = new System.Drawing.Size(273, 13);
             this.label1.TabIndex = 38;
-            this.label1.Text = "Цена деления по осям: ΔK=10 ; Δi=0.01 ;  δсм=10";
+            this.label1.Text = "Цена деления по осям: ΔK=0.01 ; Δi=0.01 ;  δсм=0.01";
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox.Location = new System.Drawing.Point(9, 9);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(441, 419);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.TabIndex = 30;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
+            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
             // 
             // GraphForm
             // 
@@ -152,12 +152,12 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GraphForm";
             this.Text = "GraphForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVect)).EndInit();
             this.GroupRotation.ResumeLayout(false);
             this.GroupRotation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

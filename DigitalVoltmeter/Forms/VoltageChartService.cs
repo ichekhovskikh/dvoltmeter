@@ -51,7 +51,7 @@ namespace DigitalVoltmeter
             for (int x = 0; x < voltages.Length; x++)
                 voltageSeries.Points.AddXY(x, voltages[x]);
 
-            chart.ChartAreas[0].AxisX.Title = "X";
+            chart.ChartAreas[0].AxisX.Title = "Выходной код";
             chart.ChartAreas[0].AxisY.Title = "Uвх";
             Series series = chart.Series.FindByName(seriesName);
             if (series != null)
