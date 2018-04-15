@@ -27,6 +27,7 @@ namespace DigitalVoltmeter.Forms
         private Point startPosition;
         private Point movePosition = new Point(200, 150);
 
+        public Point3D SelectedPoint { get; set; }
         public List<Point3D> Area { get; set; }
         public List<ParamsPolygon> Polygons { get; set; }
         private double k = 0;
@@ -208,7 +209,7 @@ namespace DigitalVoltmeter.Forms
             return sort;
         }
 
-        private void RefreshGraph()
+        public void RefreshGraph()
         {
             if (GraphicsService == null || ParamsModel == null)
                 return;
@@ -219,8 +220,10 @@ namespace DigitalVoltmeter.Forms
             Graphics g = Graphics.FromImage(bmp);
             List<Point3D> pointsFor2D = new List<Point3D>(), circle_down = new List<Point3D>();
 
-            TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.PointsOfArea, size);
-            TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.PointsOfWalls, size);
+            TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.Edges, size);
+            DrawSelectedPoint(g, new SolidBrush(Color.Yellow), SelectedPoint);
+            //TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.PointsOfArea, size);
+            //TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.PointsOfWalls, size);
             DrawAxis(g);
             
             /* Как использовать художника
@@ -251,6 +254,39 @@ namespace DigitalVoltmeter.Forms
             }
             GraphicsService.DrawSurface(g, pen, pointsFor2D);
 
+        }
+
+        private void TransformTo2DAndDrawPoints(Graphics g, Pen pen, List<List<Point3D>> edges, double size)
+        {
+            List<List<Point3D>> pointsFor2D = new List<List<Point3D>>();
+            foreach (var edge in edges)
+            {
+                List<Point3D> points = new List<Point3D>();
+                for (int i = 0; i < edge.Count; i++)
+                {
+                    points.Add(new Point3D((int)((edge[i].X * l1() + edge[i].Y * l2() + (edge[i].Z * l3())) / (size * 0.001)) + movePosition.X,
+                                                (int)((edge[i].X * m1() + edge[i].Y * m2() + (edge[i].Z * m3())) / (size * 0.001)) + movePosition.Y,
+                                                (int)((edge[i].X * n1() + edge[i].Y * n2() + (edge[i].Z * n3())) / (size * 0.001))));
+                }
+                pointsFor2D.Add(points);
+            }
+            GraphicsService.DrawSurface(g, pen, pointsFor2D);
+        }
+
+        private void DrawSelectedPoint(Graphics g, Brush brush, Point3D point)
+        {
+            if (point == null)
+                return;
+
+            double size = Math.Pow(2, level);
+            float width = 7 / (float)size;
+            float height = 7 / (float)size;
+            var selectedPoint = new Point3D((int)((point.X * l1() + point.Y * l2() + (point.Z * l3())) / (size * 0.001)) + movePosition.X,
+                                                (int)((point.X * m1() + point.Y * m2() + (point.Z * m3())) / (size * 0.001)) + movePosition.Y,
+                                                (int)((point.X * n1() + point.Y * n2() + (point.Z * n3())) / (size * 0.001)));
+            g.FillEllipse(new SolidBrush(Color.Black), (int)(selectedPoint.X - width / 2), (int)(selectedPoint.Y - height / 2), width, height);
+            g.FillEllipse(brush, (int)(selectedPoint.X - width * 0.5 / 2), (int)(selectedPoint.Y - height * 0.5 / 2), (int)(width * 0.5), (int)(height * 0.5));
+            
         }
 
         public PointF getVertexPoint(Point3D point, double size)
@@ -324,6 +360,8 @@ namespace DigitalVoltmeter.Forms
             parrent.DeltaK = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells["ΔK"].Value);
             parrent.DeltaUsm = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells["δсм"].Value);
             parrent.DeltaI = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells["Δi"].Value);
+            SelectedPoint = new Point3D((float)parrent.DeltaK, (float)parrent.DeltaUsm, (float)parrent.DeltaI);
+            RefreshGraph();
             parrent.GetModelPerformClick();
         }
 
