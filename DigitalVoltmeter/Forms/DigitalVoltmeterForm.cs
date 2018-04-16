@@ -84,7 +84,7 @@ namespace DigitalVoltmeter
 
             DataGridViewTextBoxColumn _errInds = new DataGridViewTextBoxColumn
             {
-                Name = "Ошиб. b",
+                Name = "Ошиб. компараторов",
                 SortMode = DataGridViewColumnSortMode.NotSortable,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             };
@@ -187,6 +187,7 @@ namespace DigitalVoltmeter
                 if (inCode != binaryCode)
                     dataGridViewVect.Rows[x].DefaultCellStyle.BackColor = errorCellBackColor;
             }
+            toolStripMenuItemCopy.Visible = true;
             modelVoltageColor = Color.DarkOrchid;
             VoltageChartService chartService = new VoltageChartService(this.mainChart, "Входное напряжение", voltagesQuantumStep);
             chartService.AddInputVoltageList("Voltages", modelVoltages, modelVoltageColor, 2);
@@ -344,11 +345,6 @@ namespace DigitalVoltmeter
 
         }
 
-        private void dataGridViewVect_SelectionChanged(object sender, EventArgs e)
-        {
-            dataGridViewVect.ClearSelection();
-        }
-
         private void buttonCriticalDK_Click(object sender, EventArgs e)
         {
             int n = 0, deltaIndex = 0;
@@ -384,6 +380,7 @@ namespace DigitalVoltmeter
                 if (inCode != binaryCode)
                     dataGridViewVect.Rows[x].DefaultCellStyle.BackColor = errorCellBackColor;
             }
+            toolStripMenuItemCopy.Visible = true;
             modelVoltageColor = Color.Red;
             VoltageChartService chartService = new VoltageChartService(this.mainChart, "Входное напряжение при критическом ΔK", voltagesQuantumStep);
             chartService.AddInputVoltageList("Voltages", modelVoltages, modelVoltageColor, 2);
@@ -432,6 +429,7 @@ namespace DigitalVoltmeter
                 if (inCode != binaryCode)
                     dataGridViewVect.Rows[x].DefaultCellStyle.BackColor = errorCellBackColor;
             }
+            toolStripMenuItemCopy.Visible = true;
             modelVoltageColor = Color.FromArgb(255, 128, 0); ;
             VoltageChartService chartService = new VoltageChartService(this.mainChart, "Входное напряжение при критическом Δi", voltagesQuantumStep);
             chartService.AddInputVoltageList("Voltages", modelVoltages, modelVoltageColor, 2);
@@ -473,6 +471,7 @@ namespace DigitalVoltmeter
                 if (inCode != binaryCode)
                     dataGridViewVect.Rows[x].DefaultCellStyle.BackColor = errorCellBackColor;
             }
+            toolStripMenuItemCopy.Visible = true;
             modelVoltageColor = Color.FromKnownColor(KnownColor.Highlight);
             VoltageChartService chartService = new VoltageChartService(this.mainChart, "Входное напряжение при критическом δсм", voltagesQuantumStep);
             chartService.AddInputVoltageList("Voltages", modelVoltages, modelVoltageColor, 2);
@@ -515,6 +514,10 @@ namespace DigitalVoltmeter
                 graphForm = new GraphForm(paramsModel3D, this);
                 graphForm.Show();
             }
+            else if(graphForm.Visible)
+            {
+                graphForm.Focus();
+            }
         }
 
         public double K
@@ -544,6 +547,21 @@ namespace DigitalVoltmeter
         public void GetModelPerformClick()
         {
             buttonGetModel.PerformClick();
+        }
+
+        private void toolStripMenuItemCopy_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewVect.GetCellCount(DataGridViewElementStates.Selected) > 0)
+            {
+                try
+                {
+                    Clipboard.SetDataObject(dataGridViewVect.GetClipboardContent());
+                }
+                catch (System.Runtime.InteropServices.ExternalException)
+                {
+                    MessageBox.Show("Копирование невозможно");
+                }
+            }
         }
     }
 }

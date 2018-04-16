@@ -27,6 +27,8 @@ namespace DigitalVoltmeter.Forms
         private Point startPosition;
         private Point movePosition = new Point(200, 150);
 
+        public Point3D SelectedPoint { get; set; }
+
         public List<Point3D> Area { get; set; }
         public List<ParamsPolygon> Polygons { get; set; }
         private double k = 0;
@@ -39,7 +41,6 @@ namespace DigitalVoltmeter.Forms
         public GraphForm(List<ParamsPolygon> Polygons, DigitalVoltmeterForm parrent)
         {
             InitializeComponent();
-            MouseWheel += GraphForm_MouseWheel;
             this.parrent = parrent;
             this.Polygons = Polygons;
             k = parrent.K;
@@ -52,13 +53,12 @@ namespace DigitalVoltmeter.Forms
         public GraphForm(ParamsModel3D paramsModel3D, DigitalVoltmeterForm parrent)
         {
             InitializeComponent();
-            MouseWheel += GraphForm_MouseWheel;
             this.parrent = parrent;
             k = parrent.K;
             GraphicsService = new GraphicsService();
             ParamsModel = paramsModel3D;
             InitializeDataGrid();
-
+            trackBarZoom.Value = (int)(level * 1000);
             RefreshGraph();
         }
 
@@ -108,6 +108,8 @@ namespace DigitalVoltmeter.Forms
                     uniquePoints.Add(p3d);
             for (int i = 0; i < uniquePoints.Count; i++)
                 dataGridViewVect.Rows.Add(new object[] { i, uniquePoints[i].X, uniquePoints[i].Y, uniquePoints[i].Z });
+
+            toolStripMenuItemCopy.Visible = true;
         }
 
         class Polygon
@@ -208,7 +210,7 @@ namespace DigitalVoltmeter.Forms
             return sort;
         }
 
-        private void RefreshGraph()
+        public void RefreshGraph()
         {
             if (GraphicsService == null || ParamsModel == null)
                 return;
@@ -219,8 +221,10 @@ namespace DigitalVoltmeter.Forms
             Graphics g = Graphics.FromImage(bmp);
             List<Point3D> pointsFor2D = new List<Point3D>(), circle_down = new List<Point3D>();
 
-            TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.PointsOfArea, size);
-            TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.PointsOfWalls, size);
+            TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.Edges, size);
+            DrawSelectedPoint(g, new SolidBrush(Color.Yellow), SelectedPoint);
+            //TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.PointsOfArea, size);
+            //TransformTo2DAndDrawPoints(g, Pens.Black, ParamsModel.PointsOfWalls, size);
             DrawAxis(g);
             
             /* Как использовать художника
@@ -250,6 +254,39 @@ namespace DigitalVoltmeter.Forms
 
             }
             GraphicsService.DrawSurface(g, pen, pointsFor2D);
+        }
+
+        private void TransformTo2DAndDrawPoints(Graphics g, Pen pen, List<List<Point3D>> edges, double size)
+        {
+            List<List<Point3D>> pointsFor2D = new List<List<Point3D>>();
+            foreach (var edge in edges)
+            {
+                List<Point3D> points = new List<Point3D>();
+                for (int i = 0; i < edge.Count; i++)
+                {
+                    points.Add(new Point3D((int)((edge[i].X * l1() + edge[i].Y * l2() + (edge[i].Z * l3())) / (size * 0.001)) + movePosition.X,
+                                                (int)((edge[i].X * m1() + edge[i].Y * m2() + (edge[i].Z * m3())) / (size * 0.001)) + movePosition.Y,
+                                                (int)((edge[i].X * n1() + edge[i].Y * n2() + (edge[i].Z * n3())) / (size * 0.001))));
+                }
+                pointsFor2D.Add(points);
+            }
+            GraphicsService.DrawSurface(g, pen, pointsFor2D);
+        }
+
+        private void DrawSelectedPoint(Graphics g, Brush brush, Point3D point)
+        {
+            if (point == null)
+                return;
+
+            double size = Math.Pow(2, level);
+            float width = 7 / (float)size;
+            float height = 7 / (float)size;
+            var selectedPoint = new Point3D((int)((point.X * l1() + point.Y * l2() + (point.Z * l3())) / (size * 0.001)) + movePosition.X,
+                                                (int)((point.X * m1() + point.Y * m2() + (point.Z * m3())) / (size * 0.001)) + movePosition.Y,
+                                                (int)((point.X * n1() + point.Y * n2() + (point.Z * n3())) / (size * 0.001)));
+            g.FillEllipse(new SolidBrush(Color.Black), (int)(selectedPoint.X - width / 2), (int)(selectedPoint.Y - height / 2), width, height);
+            g.FillEllipse(brush, (int)(selectedPoint.X - width * 0.5 / 2), (int)(selectedPoint.Y - height * 0.5 / 2), (int)(width * 0.5), (int)(height * 0.5));
+
 
         }
 
@@ -324,15 +361,29 @@ namespace DigitalVoltmeter.Forms
             parrent.DeltaK = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells["ΔK"].Value);
             parrent.DeltaUsm = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells["δсм"].Value);
             parrent.DeltaI = Convert.ToDouble(dataGridViewVect.Rows[e.RowIndex].Cells["Δi"].Value);
+            SelectedPoint = new Point3D((float)parrent.DeltaK, (float)parrent.DeltaUsm, (float)parrent.DeltaI);
+            RefreshGraph();
             parrent.GetModelPerformClick();
         }
 
-
-        private void GraphForm_MouseWheel(object sender, MouseEventArgs e)
+        private void toolStripMenuItemCopy_Click(object sender, EventArgs e)
         {
-            level += (e.Delta > 0) ? -0.1 : 0.1;
-            if (level < -4d) level = -4d;
-            else if (level > 3d) level = 3d;
+            if (dataGridViewVect.GetCellCount(DataGridViewElementStates.Selected) > 0)
+            {
+                try
+                {
+                    Clipboard.SetDataObject(dataGridViewVect.GetClipboardContent());
+                }
+                catch (System.Runtime.InteropServices.ExternalException)
+                {
+                    MessageBox.Show("Копирование невозможно");
+                }
+            }
+        }
+
+        private void trackBarZoom_Scroll(object sender, EventArgs e)
+        {
+            level = trackBarZoom.Value/1000d;
             RefreshGraph();
         }
 

@@ -1,0 +1,11 @@
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\bin\Release\DigitalVoltmeter.exe.config
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\bin\Release\DigitalVoltmeter.exe
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\bin\Release\DigitalVoltmeter.pdb
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Release\DigitalVoltmeter.DigitalVoltmeterForm.resources
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Release\DigitalVoltmeter.GraphExpandingForm.resources
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Release\DigitalVoltmeter.Forms.GraphForm.resources
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Release\DigitalVoltmeter.Properties.Resources.resources
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Release\DigitalVoltmeter.csproj.GenerateResource.Cache
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Release\DigitalVoltmeter.csproj.CoreCompileInputs.cache
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Release\DigitalVoltmeter.exe
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Release\DigitalVoltmeter.pdb

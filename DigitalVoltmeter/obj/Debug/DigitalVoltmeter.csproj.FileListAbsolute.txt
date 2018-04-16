@@ -104,3 +104,15 @@ I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmete
 I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Forms.GraphForm.resources
 I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
 I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.Cache
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.DigitalVoltmeterForm.resources
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.GraphExpandingForm.resources
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Forms.GraphForm.resources
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.Cache
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.CoreCompileInputs.cache
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+C:\Users\Moroz\OneDrive\Документы\GitHub\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb

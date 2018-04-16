@@ -145,15 +145,15 @@ namespace DigitalVoltmeter
         {
             int m = (int)Math.Pow(2, N) - 1;
             LongBits idealSimpleCode = MathProcessor.GetEK(data, m);
-            LongBits idealSimplePositionCode = MathProcessor.GetEPKFromEK(idealSimpleCode);
+            //LongBits idealSimplePositionCode = MathProcessor.GetEPKFromEK(idealSimpleCode);
 
             LongBits realSimpleCode = GetEKFromComparators(data);
-            LongBits realSimplePositionCode = MathProcessor.GetEPKFromEK(realSimpleCode);
+            //LongBits realSimplePositionCode = MathProcessor.GetEPKFromEK(realSimpleCode);
 
             List<int> errors = new List<int>();
             for (int i = 0; i < realSimpleCode.Length; i++)
             {
-                if (idealSimplePositionCode[i] != realSimplePositionCode[i])
+                if (idealSimpleCode[i] != realSimpleCode[i])
                     errors.Add(i + 1);
             }
             return errors.ToArray();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.progressBar = new System.Windows.Forms.ProgressBar();
@@ -46,6 +47,8 @@
             this.mainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonExpand = new System.Windows.Forms.Button();
             this.dataGridViewVect = new System.Windows.Forms.DataGridView();
+            this.contextMenuStripGridCopy = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.labelCriticalDK = new System.Windows.Forms.Label();
             this.labelCriticalDsm = new System.Windows.Forms.Label();
             this.buttonCriticalDK = new System.Windows.Forms.Button();
@@ -70,6 +73,7 @@
             this.textBoxState = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVect)).BeginInit();
+            this.contextMenuStripGridCopy.SuspendLayout();
             this.groupBoxCriticalValues.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownK)).BeginInit();
@@ -261,11 +265,11 @@
             this.dataGridViewVect.AllowUserToResizeRows = false;
             this.dataGridViewVect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewVect.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.dataGridViewVect.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.dataGridViewVect.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewVect.ContextMenuStrip = this.contextMenuStripGridCopy;
             this.dataGridViewVect.Location = new System.Drawing.Point(889, 14);
             this.dataGridViewVect.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridViewVect.MultiSelect = false;
             this.dataGridViewVect.Name = "dataGridViewVect";
             this.dataGridViewVect.ReadOnly = true;
             this.dataGridViewVect.RowHeadersVisible = false;
@@ -274,7 +278,22 @@
             this.dataGridViewVect.Size = new System.Drawing.Size(345, 602);
             this.dataGridViewVect.TabIndex = 35;
             this.dataGridViewVect.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewVect_CellPainting);
-            this.dataGridViewVect.SelectionChanged += new System.EventHandler(this.dataGridViewVect_SelectionChanged);
+            // 
+            // contextMenuStripGridCopy
+            // 
+            this.contextMenuStripGridCopy.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStripGridCopy.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemCopy});
+            this.contextMenuStripGridCopy.Name = "contextMenuStripGridCopy";
+            this.contextMenuStripGridCopy.Size = new System.Drawing.Size(176, 56);
+            // 
+            // toolStripMenuItemCopy
+            // 
+            this.toolStripMenuItemCopy.Name = "toolStripMenuItemCopy";
+            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(175, 24);
+            this.toolStripMenuItemCopy.Text = "Копировать";
+            this.toolStripMenuItemCopy.Visible = false;
+            this.toolStripMenuItemCopy.Click += new System.EventHandler(this.toolStripMenuItemCopy_Click);
             // 
             // labelCriticalDK
             // 
@@ -640,6 +659,7 @@
             this.Load += new System.EventHandler(this.DigitalVoltmeterForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVect)).EndInit();
+            this.contextMenuStripGridCopy.ResumeLayout(false);
             this.groupBoxCriticalValues.ResumeLayout(false);
             this.groupBoxCriticalValues.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownN)).EndInit();
@@ -694,6 +714,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDownDI;
         private System.Windows.Forms.Label labelCriticalDI;
         private System.Windows.Forms.TextBox textBoxState;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripGridCopy;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopy;
     }
 }
 
