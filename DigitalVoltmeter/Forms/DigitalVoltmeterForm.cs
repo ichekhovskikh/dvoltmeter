@@ -37,6 +37,7 @@ namespace DigitalVoltmeter
         private Color modelVoltageColor;
 
         private GraphExpandingForm expandingForm;
+        private GraphForm graphForm;
 
         public DigitalVoltmeterForm()
         {
@@ -160,6 +161,11 @@ namespace DigitalVoltmeter
             {
                 MessageBox.Show("Неверный формат входных параметров!");
                 return;
+            }
+            if (graphForm != null && graphForm.Visible)
+            {
+                graphForm.SelectedPoint = new Point3D((float)deltaCoeff, (float)deltaSM, (float)deltaI);
+                graphForm.RefreshGraph();
             }
 
             DACEmulator emulator = new DACEmulator(n, coeff, deltaCoeff, deltaI, deltaSM);
@@ -478,7 +484,7 @@ namespace DigitalVoltmeter
 
         }
 
-        private async void buttonGetCritical3DModel_Click(object sender, EventArgs e)
+        private void buttonGetCritical3DModel_Click(object sender, EventArgs e)
         {
             BuildModel();
         }
@@ -501,10 +507,14 @@ namespace DigitalVoltmeter
 
             CriticalParamsService.TextBoxLog = textBoxState;
             //List<ParamsPolygon> polygons = await CriticalParamsService.GetPolygonsOfCriticalArea(n, coeff, countOfResolution, 1);
-            var paramsModel3D = CriticalParamsService.GetCriticalArea(n, coeff, countOfResolution, 1);
+            //var paramsModel3D = CriticalParamsService.GetCriticalArea(n, coeff, countOfResolution, 1);
+            var paramsModel3D = CriticalParamsService.GetCriticalAreaSpecialEditionOfTheBestPractises(n, coeff, countOfResolution, 1);
             //GraphForm graphForm = new GraphForm(polygons, this);
-            GraphForm graphForm = new GraphForm(paramsModel3D, this);
-            graphForm.Show();
+            if (graphForm == null || !graphForm.Visible)
+            {
+                graphForm = new GraphForm(paramsModel3D, this);
+                graphForm.Show();
+            }
         }
 
         public double K

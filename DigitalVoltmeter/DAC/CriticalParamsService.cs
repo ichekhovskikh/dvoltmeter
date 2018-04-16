@@ -346,11 +346,103 @@ namespace DigitalVoltmeter
             return new ParamsModel3D(areaUp, areaOfWalls);
         }
 
-        public static async Task<List<ParamsPolygon>> GetPolygonsOfCriticalArea(int n, double coeff, double deltaSmInitialStep = 1, double deltaCoeffStep = 1)
+        /// <summary>
+        /// Поиск области допустимых значений критических параметров для двумерного случая,
+        /// то есть для deltaSm и deltaK
+        /// Идея такова: на плоскости X, Y находится верхняя и нижняя части области areaUp и areaBottom и объединяются в общую область
+        /// Затем по оси Z строятся дуги edgeUp (верхняя) и edgeBottom (нижняя) - они также объединяются в одну плоскость
+        /// Таким образом строятся ребра, после чего все записывается в один массив точек
+        /// Ребра были сделаны для того, чтобы их потом последовательно можно было соединить линиями
+        /// А можно и отрисовать только лишь точки
+        /// </summary>
+        /// <param name="n"></param>
+        /// <param name="coeff"></param>
+        /// <param name="deltaSmStep"></param>
+        /// <param name="deltaSmStep"></param>
+        public static ParamsModel3D GetCriticalAreaSpecialEditionOfTheBestPractises(int n, double coeff, double deltaSmInitialStep = 1, double deltaCoeffStep = 1)
         {
-            return await Task.Run(() =>
-            {
+            if (deltaSmInitialStep <= 0 || deltaCoeffStep <= 0)
+                throw new Exception("Недопустимые аргументы, должны быть > 0!");
 
+            List<List<Point3D>> edges = new List<List<Point3D>>();
+            List<Point3D> edgeHorizontalUpMin = new List<Point3D>();
+            List<Point3D> edgeHorizontalBottomMin = new List<Point3D>();
+            List<Point3D> edgeHorizontalUpMax = new List<Point3D>();
+            List<Point3D> edgeHorizontalBottomMax = new List<Point3D>();
+            List<Point3D> areaUp = new List<Point3D>();
+            List<Point3D> areaBottom = new List<Point3D>();
+            DACEmulator emulator = new DACEmulator(n, coeff, 0, 0, 0);
+
+            //Нижняя и верхняя половины области
+            int edgesCount = 0;
+            areaUp = GetPointsOfCriticalArea(emulator, DACEmulator.Delta.Coeff, DACEmulator.Delta.SM, deltaSmInitialStep, deltaCoeffStep);
+            emulator.DeltaCoeff = 0;
+            emulator.DeltaIndex = 0;
+            emulator.DeltaSM = 0;
+            areaBottom = GetPointsOfCriticalArea(emulator, DACEmulator.Delta.Coeff, DACEmulator.Delta.SM, deltaSmInitialStep, -deltaCoeffStep);
+            edgesCount = areaUp.Count;
+
+            
+
+            for (int i = 0; i < edgesCount; i++)
+            {
+                List<Point3D> edge = new List<Point3D>();
+                emulator.DeltaCoeff = areaUp[i].X;
+                emulator.DeltaIndex = 0;
+                List<Point3D> edgeUp = GetPointsOfCriticalArea(emulator, areaBottom[i].Y, areaUp[i].Y, DACEmulator.Delta.SM, DACEmulator.Delta.Index, deltaSmInitialStep, deltaCoeffStep);
+                edge.AddRange(edgeUp);
+                emulator.DeltaCoeff = areaUp[i].X;
+                emulator.DeltaIndex = 0;
+                List<Point3D> edgeBottom = GetPointsOfCriticalArea(emulator, areaBottom[i].Y, areaUp[i].Y, DACEmulator.Delta.SM, DACEmulator.Delta.Index, deltaSmInitialStep, -deltaCoeffStep);
+                //edgeBottom.Reverse();
+
+                
+                //Формирование боковых граней
+                Point3D pointUpMax = edgeUp[edgeUp.Count - 1];
+                Point3D pointUpMin = edgeUp[0];
+                Point3D pointBottomMax = edgeBottom[edgeUp.Count - 1];
+                Point3D pointBottomMin = edgeBottom[0];
+                float stepMax = (pointUpMax.Z - pointBottomMax.Z) / (float)(deltaSmInitialStep - 1);
+                for (int j = 0; j < deltaSmInitialStep; j++)
+                    edge.Add(new Point3D(pointUpMax.X, pointUpMax.Y, pointUpMax.Z - stepMax * j));
+                edgeBottom.Reverse();
+
+                float stepMin = (pointUpMin.Z - pointBottomMin.Z) / (float)(deltaSmInitialStep - 1);
+                for (int j = 0; j < deltaSmInitialStep; j++)
+                    edge.Add(new Point3D(pointBottomMin.X, pointBottomMin.Y, pointBottomMin.Z + stepMin * j));
+
+                edgeHorizontalUpMin.Add(pointUpMin);
+                edgeHorizontalUpMax.Add(pointUpMax);
+                edgeHorizontalBottomMin.Add(pointBottomMin);
+                edgeHorizontalBottomMax.Add(pointBottomMax);
+                //Строим заднюю стенку
+                //if (edgesCount > 0 && i == edgesCount - 1)
+                //{
+                //    float stepSm = (pointUpMax.Y - pointUpMin.Y) / (float)(deltaSmInitialStep - 1);
+                //    for (int j = 0; j < deltaSmInitialStep; j++)
+                //        for (int k = 0; k < deltaSmInitialStep; k++)
+                //            areaOfWalls.Add(new Point3D(pointBottomMin.X, pointBottomMin.Y + stepSm * j, edgeBottom[j].Z + stepMin * k));
+                //}
+
+                edgeUp.AddRange(edgeBottom);
+                areaUp.AddRange(edgeUp);
+                edges.Add(edge);
+            }
+            edgeHorizontalUpMax.Reverse();
+            edgeHorizontalUpMin.AddRange(edgeHorizontalUpMax);
+            edgeHorizontalBottomMax.Reverse();
+            edgeHorizontalBottomMin.AddRange(edgeHorizontalBottomMax);
+            edges.Add(edgeHorizontalUpMin);
+            edges.Add(edgeHorizontalBottomMin);
+
+            areaBottom.Reverse();
+            //areaUp.AddRange(areaBottom);
+            areaUp.RemoveRange(0, edgesCount);
+            return new ParamsModel3D(edges, areaUp);
+        }
+
+        public static List<ParamsPolygon> GetPolygonsOfCriticalArea(int n, double coeff, double deltaSmInitialStep = 1, double deltaCoeffStep = 1)
+        {
                 if (deltaSmInitialStep <= 0 || deltaCoeffStep <= 0)
                     throw new Exception("Недопустимые аргументы, должны быть > 0!");
                 Log("Построение основы... Подсчет точек... 0%");
@@ -424,7 +516,6 @@ namespace DigitalVoltmeter
                 areaResult.RemoveRange(0, edgesCount);
                 Log("Готово! 100%");
                 return polygons;
-            });
         }
 
         private static List<Point3D> GetPointsOfCriticalArea(DACEmulator emulator, DACEmulator.Delta minMaxDeltaParameter, DACEmulator.Delta changingDeltaParameter, double minMaxDeltaParameterStep = 1, double changingDeltaParameterStep = 1, double accuracy = 0.0001)

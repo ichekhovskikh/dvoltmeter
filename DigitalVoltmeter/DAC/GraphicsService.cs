@@ -54,6 +54,42 @@ namespace DigitalVoltmeter.DAC
             }
         }
 
+        public void DrawSurface(Graphics g, Pen pen, List<List<Point3D>> edges)
+        {
+            foreach (var edge in edges)
+            {
+                List<double[]> order = SortArt(edge);
+                for (int i = 0; i < edge.Count; i++)
+                {
+                    //int index = (int)order[i][1];
+                    //order[i][0] = (order[i][0] < 0) ? 0 : order[i][0];
+                    //double diapason = Math.Abs(order[i][0] - order[order.Count - 1][0]);
+                    //int alpha = (int)((float)i / (float)edge.Count * 255);
+                    ////int alpha = (int)(((order[i][0] - order[0][0]) / diapason)*255);
+                    //if (alpha > 255) alpha = 255;
+                    //if (alpha < 20) alpha = 20;
+
+                    //int size = (int)((float)i / (float)edge.Count * 3);
+                    int alpha = 255;
+                    int size = 2;
+                    g.DrawLine(new Pen(new SolidBrush(Color.FromArgb(alpha, 0, 0, 0)), size), edge[i].PointF, 
+                                    (i+1<edge.Count?edge[i + 1].PointF:edge[0].PointF));
+
+                    //Какая то странная ошибка переполнения
+                    //try
+                    //{
+                    //    g.DrawRectangle(new Pen(new SolidBrush(Color.FromArgb(alpha, 0, 0, 0)), size + 1),
+                    //            (int)edge[index].X,
+                    //            (int)edge[index].Y, size, size);
+                    //}
+                    //catch { }
+                }
+
+                //g.DrawLines(pen, edge.Select(x => x.PointF).ToArray());
+            }
+                
+        }
+
         private List<double[]> SortArt(List<Point3D> points)
         {
             List<double[]> sort = new List<double[]>();

@@ -82,3 +82,25 @@ D:\Labs\Volt\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
 C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.GraphExpandingForm.resources
 C:\Users\chekh\Education\4 Курс\2 Семестр\Метрология\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Forms.GraphForm.resources
 C:\Users\autor\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Forms.GraphForm.resources
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.DigitalVoltmeterForm.resources
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.GraphExpandingForm.resources
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Forms.GraphForm.resources
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+I:\Source\Repos\dvoltmeter\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.Cache
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe.config
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.exe
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.pdb
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.exe
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\bin\Debug\DigitalVoltmeter.pdb
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csprojResolveAssemblyReference.cache
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.DigitalVoltmeterForm.resources
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.GraphExpandingForm.resources
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Forms.GraphForm.resources
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.Properties.Resources.resources
+I:\Source\Repos\dvoltmeter_with_new3D\DigitalVoltmeter\obj\Debug\DigitalVoltmeter.csproj.GenerateResource.Cache
